@@ -24,7 +24,7 @@ for your `@Serializable` models.
 @POST @Path("register")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-fun register(RegisterRequest registerRequest): RegisterResponse {
+fun register(registerRequest: RegisterRequest): RegisterResponse {
   // ...
 }
 ```
