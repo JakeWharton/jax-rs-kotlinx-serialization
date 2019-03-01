@@ -35,7 +35,7 @@ Download
 
 Gradle:
 ```groovy
-compile 'com.jakewharton:jax-rs-kotlinx-serialization:0.1.0'
+implementation 'com.jakewharton:jax-rs-kotlinx-serialization:0.1.0'
 ```
 or Maven:
 ```xml
