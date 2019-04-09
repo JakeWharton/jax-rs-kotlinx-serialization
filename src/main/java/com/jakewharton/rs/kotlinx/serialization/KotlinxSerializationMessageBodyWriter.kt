@@ -29,7 +29,7 @@ private class StringFormatMessageBodyWriter(
   override fun isWriteable(
     type: Class<*>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType
   ): Boolean {
     return mediaType in mediaTypes
@@ -39,7 +39,7 @@ private class StringFormatMessageBodyWriter(
     value: Any,
     type: Class<*>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, Any>,
     entityStream: OutputStream
@@ -62,7 +62,7 @@ private class BinaryFormatMessageBodyWriter(
   override fun isWriteable(
     type: Class<*>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType
   ): Boolean {
     return mediaType in mediaTypes
@@ -72,7 +72,7 @@ private class BinaryFormatMessageBodyWriter(
     value: Any,
     type: Class<*>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, Any>,
     entityStream: OutputStream
