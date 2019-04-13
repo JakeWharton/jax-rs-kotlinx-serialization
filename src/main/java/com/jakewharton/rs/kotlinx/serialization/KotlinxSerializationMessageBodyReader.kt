@@ -29,7 +29,7 @@ private class StringFormatMessageBodyReader(
   override fun isReadable(
     type: Class<*>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType
   ): Boolean {
     return mediaType in mediaTypes
@@ -38,7 +38,7 @@ private class StringFormatMessageBodyReader(
   override fun readFrom(
     type: Class<Any>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, String>,
     entityStream: InputStream
@@ -70,7 +70,7 @@ private class BinaryFormatMessageBodyReader(
   override fun readFrom(
     type: Class<Any>,
     genericType: Type,
-    annotations: Array<out Annotation>,
+    annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, String>,
     entityStream: InputStream
