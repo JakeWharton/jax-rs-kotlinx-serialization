@@ -28,7 +28,7 @@ private class StringFormatMessageBodyReader(
 ) : MessageBodyReader<Any> {
   override fun isReadable(
     type: Class<*>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType
   ): Boolean {
@@ -37,7 +37,7 @@ private class StringFormatMessageBodyReader(
 
   override fun readFrom(
     type: Class<Any>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, String>,
@@ -50,7 +50,7 @@ private class StringFormatMessageBodyReader(
     } ?: Charsets.UTF_8
 
     val string = entityStream.readBytes().toString(charset) // Not closing per parameter Javadoc.
-    return format.parse(serializerByTypeToken(genericType), string)
+    return format.parse(serializerByTypeToken(genericType ?: type), string)
   }
 }
 
@@ -69,13 +69,13 @@ private class BinaryFormatMessageBodyReader(
 
   override fun readFrom(
     type: Class<Any>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, String>,
     entityStream: InputStream
   ): Any {
     val bytes = entityStream.readBytes() // Not closing per parameter Javadoc.
-    return format.load(serializerByTypeToken(genericType), bytes)
+    return format.load(serializerByTypeToken(genericType ?: type), bytes)
   }
 }

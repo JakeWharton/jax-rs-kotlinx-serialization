@@ -28,7 +28,7 @@ private class StringFormatMessageBodyWriter(
 ) : MessageBodyWriter<Any> {
   override fun isWriteable(
     type: Class<*>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType
   ): Boolean {
@@ -38,13 +38,13 @@ private class StringFormatMessageBodyWriter(
   override fun writeTo(
     value: Any,
     type: Class<*>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, Any>,
     entityStream: OutputStream
   ) {
-    val string = format.stringify(serializerByTypeToken(genericType), value)
+    val string = format.stringify(serializerByTypeToken(genericType ?: type), value)
     val charset = try {
       mediaType.parameters["charset"]?.let(Charset::forName)
     } catch (e: RuntimeException) {
@@ -61,7 +61,7 @@ private class BinaryFormatMessageBodyWriter(
 ) : MessageBodyWriter<Any> {
   override fun isWriteable(
     type: Class<*>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType
   ): Boolean {
@@ -71,13 +71,13 @@ private class BinaryFormatMessageBodyWriter(
   override fun writeTo(
     value: Any,
     type: Class<*>,
-    genericType: Type,
+    genericType: Type?,
     annotations: Array<out Annotation>?,
     mediaType: MediaType,
     httpHeaders: MultivaluedMap<String, Any>,
     entityStream: OutputStream
   ) {
-    val bytes = format.dump(serializerByTypeToken(genericType), value)
+    val bytes = format.dump(serializerByTypeToken(genericType ?: type), value)
     entityStream.write(bytes) // Not closing per parameter Javadoc.
   }
 }
