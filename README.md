@@ -35,14 +35,14 @@ Download
 
 Gradle:
 ```groovy
-implementation 'com.jakewharton:jax-rs-kotlinx-serialization:0.1.0'
+implementation 'com.jakewharton:jax-rs-kotlinx-serialization:0.2.0'
 ```
 or Maven:
 ```xml
 <dependency>
   <groupId>com.jakewharton</groupId>
   <artifactId>jax-rs-kotlinx-serialization</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
