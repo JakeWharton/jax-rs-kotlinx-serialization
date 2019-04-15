@@ -1,6 +1,13 @@
 Change Log
 ==========
 
+Version 0.2.1 *(2019-04-15)*
+----------------------------
+
+ * Fix: Allow null generic type which is used by at least one implementation. Fall back to non-generic
+   type which is required.
+
+
 Version 0.2.0 *(2019-04-12)*
 ----------------------------
 
